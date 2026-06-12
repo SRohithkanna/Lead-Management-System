@@ -22,3 +22,13 @@ export const deleteLead = (id) => API.delete(`/leads/${id}`)
 // Update status only
 export const updateLeadStatus = (id, status) =>
   API.patch(`/leads/${id}/status`, { status })
+
+// Download all leads as CSV
+export const exportLeadsCSV = () => {
+  window.open('/api/leads/export/csv', '_blank')
+}
+
+// Download all leads as PDF
+export const exportLeadsPDF = () => {
+  window.open('/api/leads/export/pdf', '_blank')
+}

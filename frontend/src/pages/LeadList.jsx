@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useLeads } from '../context/LeadContext'
 import StatusBadge from '../components/StatusBadge'
 import ConfirmModal from '../components/ConfirmModal'
+import { exportLeadsCSV, exportLeadsPDF } from '../services/leadService'
 
 const STATUSES = ['New', 'Contacted', 'Qualified', 'Converted', 'Lost']
 const SOURCES = ['Website', 'Referral', 'Social Media', 'Email Campaign', 'Other']
@@ -77,11 +78,19 @@ const LeadList = () => {
     <div>
       {/* Page header */}
       <div className="page-header">
-        <h1 className="page-title">All Leads ({total})</h1>
-        <button className="btn btn-primary" onClick={() => navigate('/leads/new')}>
-          + Add Lead
-        </button>
-      </div>
+  <h1 className="page-title">All Leads ({total})</h1>
+  <div style={{ display: 'flex', gap: '8px' }}>
+    <button className="btn" onClick={exportLeadsCSV}>
+      Download CSV
+    </button>
+    <button className="btn" onClick={exportLeadsPDF}>
+      Download PDF
+    </button>
+    <button className="btn btn-primary" onClick={() => navigate('/leads/new')}>
+      + Add Lead
+    </button>
+  </div>
+</div>
 
       {/* Stats */}
       <div className="stats-row">
