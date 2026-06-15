@@ -7,6 +7,9 @@ const API = axios.create({
 // Get all leads (with optional search/filter params)
 export const getAllLeads = (params = {}) => API.get('/leads', { params })
 
+// Get summary data for dashboard
+export const getLeadsSummary = () => API.get('/leads/summary')
+
 // Get single lead by ID
 export const getLeadById = (id) => API.get(`/leads/${id}`)
 

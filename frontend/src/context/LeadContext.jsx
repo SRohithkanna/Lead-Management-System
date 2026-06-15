@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useCallback } from 'react'
 import {
   getAllLeads,
+  getLeadsSummary,
   getLeadById,
   createLead,
   updateLead,
@@ -15,7 +16,9 @@ export const useLeads = () => useContext(LeadContext)
 export const LeadProvider = ({ children }) => {
   const [leads, setLeads] = useState([])
   const [selectedLead, setSelectedLead] = useState(null)
+  const [summary, setSummary] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [summaryLoading, setSummaryLoading] = useState(false)
   const [error, setError] = useState(null)
   const [total, setTotal] = useState(0)
 
@@ -31,6 +34,19 @@ export const LeadProvider = ({ children }) => {
       setError(err.response?.data?.message || 'Failed to fetch leads')
     } finally {
       setLoading(false)
+    }
+  }, [])
+
+  // Fetch summary
+  const fetchSummary = useCallback(async () => {
+    setSummaryLoading(true)
+    try {
+      const res = await getLeadsSummary()
+      setSummary(res.data.summary)
+    } catch (err) {
+      console.error('Failed to fetch summary:', err)
+    } finally {
+      setSummaryLoading(false)
     }
   }, [])
 
@@ -80,10 +96,13 @@ export const LeadProvider = ({ children }) => {
       value={{
         leads,
         selectedLead,
+        summary,
         loading,
+        summaryLoading,
         error,
         total,
         fetchLeads,
+        fetchSummary,
         fetchLeadById,
         addLead,
         editLead,
