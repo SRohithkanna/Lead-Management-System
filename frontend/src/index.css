@@ -330,3 +330,186 @@ tbody tr:hover { background-color: #fafafa; }
 .pagination button:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .flags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 3px; }
+
+/* ===========================
+   Responsive Design
+   =========================== */
+
+/* Prevent horizontal scrolling */
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Tables */
+.table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* --------------------------
+   Tablet (768px)
+-------------------------- */
+
+@media (max-width: 768px) {
+
+    /* Stack layout */
+    .layout {
+        flex-direction: column;
+    }
+
+    /* Sidebar becomes top navigation */
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
+
+    .sidebar-header {
+        text-align: center;
+    }
+
+    .sidebar-nav {
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding: 8px;
+    }
+
+    .sidebar-nav li {
+        flex: 0 0 auto;
+    }
+
+    .sidebar-nav li a {
+        padding: 10px 14px;
+    }
+
+    .sidebar-section-title {
+        display: none;
+    }
+
+    .main-content {
+        padding: 16px;
+    }
+
+    /* Page header */
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .page-title {
+        font-size: 24px;
+    }
+
+    /* Summary cards */
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Status cards */
+    .status-breakdown-item {
+        flex: 1 1 calc(50% - 10px);
+    }
+
+    /* Form */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    /* Toolbar */
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .toolbar input,
+    .toolbar select,
+    .toolbar button {
+        width: 100%;
+    }
+
+    /* Modal */
+    .modal {
+        width: 90%;
+    }
+
+    /* Buttons */
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions .btn {
+        width: 100%;
+    }
+
+    .pagination {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+/* --------------------------
+   Mobile (480px)
+-------------------------- */
+
+@media (max-width: 480px) {
+
+    body {
+        font-size: 13px;
+    }
+
+    .main-content {
+        padding: 12px;
+    }
+
+    .page-title {
+        font-size: 20px;
+    }
+
+    /* One card per row */
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .summary-card {
+        padding: 12px;
+    }
+
+    .status-breakdown {
+        flex-direction: column;
+    }
+
+    .status-breakdown-item {
+        width: 100%;
+    }
+
+    /* Smaller tables */
+    table {
+        min-width: 650px;
+    }
+
+    .detail-table td:first-child {
+        width: 120px;
+    }
+
+    .card {
+        padding: 14px;
+    }
+
+    .modal {
+        width: 95%;
+        padding: 16px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
