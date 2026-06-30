@@ -13,10 +13,13 @@ import LeadDetail from './pages/LeadDetail'
 import Settings from './pages/Settings'
 
 // Layout wrapper — sidebar + content
+// Layout wrapper — sidebar + content
 const AppLayout = ({ children }) => (
   <div className="layout">
     <Sidebar />
-    <main className="main-content">{children}</main>
+    <div className="page-wrapper">
+      <main className="main-content">{children}</main>
+    </div>
   </div>
 )
 
